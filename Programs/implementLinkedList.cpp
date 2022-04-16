@@ -92,6 +92,20 @@ class LinkedList{
         bool contains(int n){
             return (indexOf(n) != -1);
         }
+        void reverse(){
+            Node *previous = first;
+            Node *current = previous -> next;
+            Node *next;
+            while(current){
+                next = current -> next;
+                current -> next = previous;
+                previous = current;
+                current = next;
+            }
+            last = first;
+            last -> next = NULL;
+            first = previous;
+        }
         void printLinkedList(){
             Node *temp = first;
             while(temp){
@@ -108,6 +122,8 @@ int main(){
     n.removeLast();
     n.addFirst(-10);
     n.addLast(20);
+    n.reverse();
+    n.removeFirst();
     n.printLinkedList();
     return 0;
 }
