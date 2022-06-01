@@ -3,10 +3,9 @@
 using namespace std;
 
 class UStack{
-    int index = -1;
-    int members[SIZE];
+    int index = 0, members[SIZE];
     bool isFull(){
-        return(index == SIZE - 1);
+        return(index == SIZE);
     }
 public:
     void push(int n){
@@ -14,7 +13,7 @@ public:
             cout << "fullStackException" << endl;
         }
         else{
-            members[++index] = n;
+            members[index++] = n;
         }
     }
     int pop(){
@@ -22,27 +21,23 @@ public:
             cout << "emptyStackException" << endl;
         }
         else{
-            int x = members[index];
-            members[index--] = NULL;
+            int x = members[--index];
             return x;
         }
     }
     int size(){
-        return (index + 1);
+        return index;
     }
     int top(){
         if(isEmpty()){
             cout << "noSuchElementException" << endl;
         }
         else{
-            if(isEmpty()){
-                cout << "emptyStackException" << endl;
-            }
-            return members[index];
+            return members[index - 1];
         }
     }
     bool isEmpty(){
-        return (index == -1);
+        return (index == 0);
     }
 };
 
