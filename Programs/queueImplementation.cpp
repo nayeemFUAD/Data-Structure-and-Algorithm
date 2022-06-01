@@ -6,9 +6,9 @@
 using namespace std;
 
 class UQueue{
-    int members[SIZE], i = -1;
+    int members[SIZE], index = 0;
     bool isFull(){
-        return(i == SIZE - 1);
+        return(index == SIZE);
     }
 public:
     void enqueue(int n){
@@ -16,7 +16,7 @@ public:
             cout << "fullQueueException" << endl;
         }
         else{
-            members[++i] = n;
+            members[index++] = n;
         }
     }
     int dequeue(){
@@ -28,15 +28,15 @@ public:
             for(int j = 0; j < size(); j++){
                 members[j] = members[j + 1];
             }
-            members[i--] = NULL;
+            index--;
             return x;
         }
     }
     int size(){
-        return (i + 1);
+        return (index);
     }
     bool isEmpty(){
-        return (i == -1);
+        return (index == 0);
     }
     int front(){
         if(isEmpty()){
